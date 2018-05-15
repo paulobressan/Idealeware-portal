@@ -6,20 +6,20 @@
 <hr>
 <div class="row">
     <div class="col-md-2">
-        <button class="btn btn-primary"><i class="fas fa-plus"></i> Novo Produto</button>
+        <button [routerLink]="['/cadastrar-produtos']" class="btn btn-primary"><i class="fas fa-plus"></i> Novo Produto</button>
     </div>
 </div>
 <hr>
-<input #texto (keyup) = "0" type="text" class="form-control" placeholder="Filtrar">
+<input #texto (keyup) = "0" type="text" class="mb-3 form-control" placeholder="Filtrar">
 <table class="table table-hover">
-    <thead class="text-center">
+    <thead >
         <th>Código</th>
         <th>Nome</th>
         <th>Descrição</th>
         <th>Categoria</th>
         <th>Valor de Compra</th>
         <th>Valor de Venda</th>
-        <th>Eventos</th>
+        <th class="text-center">Eventos</th>
     </thead>
     <tbody>
         <tr *ngFor="let produto of produtos | filtroPorNomeProduto: texto.value">
@@ -30,10 +30,10 @@
             <td class="text-right">R$ {{produto.valorCompra}}</td>
             <td class="text-right">R$ {{produto.valorVenda}}</td>
             <td class="text-center">
-                <button style="margin: 5px;" class="btn btn-warning">
+                <button [routerLink]="['/alterar-produtos']" [queryParams] = "{id: produto.idProduto}" style="margin-left: 5px;margin-right: 5px;" class="btn btn-warning">
                     <i class="fas fa-pencil-alt"></i>
                 </button>
-                <button style="margin: 5px;" class="btn btn-danger">
+                <button (click)="remover(produto)" style="margin-left: 5px;margin-right: 5px;" class="btn btn-danger">
                     <i class="fas fa-trash-alt"></i>
                 </button>
             </td>

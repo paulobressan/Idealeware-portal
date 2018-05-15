@@ -1,0 +1,33 @@
+<section class="mt-3">
+    <h2>{{titulo}}</h2>
+    <hr>
+    <p class="text-info">{{mensagem}}</p>
+    <form (submit)="salvar($event)">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input [(ngModel)]="categoria.nome" type="text" name="nome" id="nome" class="form-control" placeholder="nome da categoria"
+                        required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="descricao">Descrição</label>
+                    <input [(ngModel)]="categoria.descricao" type="text" name="descricao" id="descricao" placeholder="Descrição da categoria"
+                        class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i>
+                    Enviar
+                </button>
+            </div>
+        </div>
+    </form>
+</section>

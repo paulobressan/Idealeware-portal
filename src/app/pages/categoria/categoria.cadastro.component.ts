@@ -3,11 +3,11 @@ import {Http, Headers} from '@angular/http';
 
 @Component({
     selector: 'categoriaCadastro',
-    templateUrl: './categoriaCadastro.component.html'
+    templateUrl: './categoria.form.component.html'
 })
-export class CategotiaCadastroComponent{
+export class CategoriaCadastroComponent{
     categoria :Object = this.criarCategoria();
-
+    titulo :string = "Cadastro de Categorias";
     criarCategoria(){
         return {
             nome: '',
@@ -21,7 +21,7 @@ export class CategotiaCadastroComponent{
         this.http = http;
     }
 
-    cadastrar(event){
+    salvar(event){
         event.preventDefault();
         let header = new Headers();
         header.append('Content-type', 'application/json');      

@@ -1,0 +1,57 @@
+<section class="mt-3">
+    <h2>{{titulo}}</h2>
+    <hr>
+    <p class="text-info">{{mensagem}}</p>
+    <form (submit)="salvar($event)">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input [(ngModel)]="produto.nome" type="text" name="nome" id="nome" class="form-control" placeholder="nome do produto" required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="descricao">Descrição</label>
+                    <input [(ngModel)]="produto.descricao" type="text" name="descricao" id="descricao" class="form-control" placeholder="descrição do produto">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="valorCompra">Valor de Compra</label>
+                    <input [(ngModel)]="produto.valorCompra" type="number" name="valorCompra" id="valorCompra" class="form-control" placeholder=0,00
+                        required>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="valorVenda">Valor de Venda</label>
+                    <input [(ngModel)]="produto.valorVenda" type="number" name="valorVenda" id="valorVenda" class="form-control" placeholder=0,00
+                        required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="categoria">Categoria</label>
+                    <select [(ngModel)]="produto.IdCategoria"  name="categoria" id="categoria" class="form-control">
+                        <option *ngFor="let categoria of categorias" value="{{categoria.idCategoria}}">{{categoria.nome}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i>
+                    Enviar
+                </button>
+            </div>
+        </div>
+    </form>
+</section>

@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component } from "@angular/core";
 import {HttpClient} from '@angular/common/http'
 import { Http } from "@angular/http";
 
@@ -7,11 +7,17 @@ import { Http } from "@angular/http";
     templateUrl: './categoria.component.html'
 })
 export class CategoriaComponent{
-    @Input() categorias :Object[] = [];
+    categorias :Object[] = [];
     http :Http;
+    httpClient: HttpClient;
     constructor(httpClient :HttpClient, http: Http){
         this.http = http;
-        httpClient
+        this.httpClient = httpClient;
+        this.CarregarCategorias();
+    }
+
+    CarregarCategorias(){
+        this.httpClient
             .get('http://localhost:5000/api/categoria/')       
             .subscribe((res :Object[]) =>{           
                  this.categorias = res;
@@ -23,6 +29,7 @@ export class CategoriaComponent{
             .delete(`http://localhost:5000/api/categoria/${categoria.idCategoria}`)
             .subscribe(()=>{
                 console.log("Sucesso");
+                this.CarregarCategorias();
             }, erro=>console.log(erro));
               
     }
